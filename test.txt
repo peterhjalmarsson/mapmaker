@@ -1,0 +1,15 @@
+seed 43498
+map MAP1 create 256 256
+mask MASK1 create MAP1
+mask MASK1 dla 300 4 4 mask
+filter mask MASK1 grow1
+mask MASK1 invert
+map MAP1 raise MASK1 1.0 2.5
+mask MASK1 topng ./mask.png
+mask MASK1 reset
+filter map MAP1 MASK1 blur3
+map MAP1 lift MASK1 0.005 0.08
+map MAP1 noise perlin MASK1 0.8 4.0
+#filter map MAP1 MASK1 sharpen
+#filter map MAP1 MASK1 blur3
+map MAP1 topng ./map.png
