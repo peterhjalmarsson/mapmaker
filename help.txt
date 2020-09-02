@@ -1,0 +1,86 @@
+all lines beginning with # is ignored
+if too many arguments are supplied the unused ones are ignored
+
+commands:
+  help
+    display this text
+
+  script <file>
+    run script <file>
+  seed <int seed>
+    set a new random seed
+
+  map <name> create <int x> <int y>
+    create new map of size x*y
+  map <name> reset
+    reset map nodes to zero
+  map <name> invert
+    invert map values
+  map <name> scale <double scale>
+    scale map height around zero level
+  map <name> min <int height>
+    rescale map to change minimum to new value
+  map <name> max <int height>
+    rescale map to change maximum to new value
+  map <name> merge <name2> <add/subtract/multiply/exponential/difference/max/min>
+    merge two maps using different modes
+  map <name> name <newname>
+    change map name
+  map <name> copy <newname>
+    make copy of map <name> with new name
+  map <name> topng <file>
+    export map as png image <file>
+  map <name> noise <billow/checkerboard/cylinders/perlin/ridgedmulti/spheres/ridgedmulti> 
+      <maskname> <double scale> 
+      [<double frequency> <double persistence> <double lacunarity> <int octaveCount>]
+  map <name> raise <maskname> <double height>
+   ////////////////////
+  map <name> stretch <maskname> <double height> <double random>
+    /////////////////////////
+  map <name> lift <maskname> <double height> <double random>
+    ////////////////////////
+
+  mask <name> create <mapname>
+    create mask of same size as map
+  mask <name> reset
+	reset mask nodes to unmask
+  mask <name> invert
+    invert mask
+  mask <name> high <mapname> <int height> <mask/unmask>
+    mask high nodes on map
+  mask <name> low <mapname> <int height> <mask/unmask>
+    mask low nodes on map
+  mask <name> edge <int distance> <mask/unmask>
+    mask nodes close to edge
+  mask <name> middle <int distance> <mask/unmask>
+    mask nodes not close to edge
+  mask <name> circle <int x> <int y> <int radius> <mask/unmask>
+    mask a circle
+  mask <name> negativecircle <int x> <int y> <int radius> <mask/unmask>
+    mask nodes outside a circle
+  mask <name> rectangle <int x1> <int y1> <int x2> <int y2> <mask/unmask>
+    mask a rectangle
+  mask <name> negativerectangle <int x1> <int y1> <int x2> <int y2> <mask/unmask>
+    mask nodes outside a rectangle
+  mask <name> random <int percent> <mask/unmask>
+    mask random nodes on mask
+  mask <name> merge <name2> <and/or/xor/not>
+    mask two masks using different modes
+  mask <name> dla <int count> <double moveDist> <double aggDist>
+    ///////////////////////////
+  mask <name> dlaquick <int count> <double moveDist> <double aggDist>
+    ///////////////////////////
+  mask <name> growth <int count> <mask/unmask>
+    /////////////////////////////////
+  mask <name> name <newname>
+    change mask name
+  mask <name> copy <newname>
+    make copy of mask <name> and give it new name
+  map <name> topng <file>
+    export mask as png image <file>
+  
+  filter types: sharpen, blur1, blur2, blur3
+  filter map <mapname> <maskname> <filtertype>
+    /////////////////////////////////////
+  filter mask <maskname> <filtertype>
+    //////////////////////////////////
